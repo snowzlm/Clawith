@@ -83,6 +83,8 @@ async def list_sessions(
                 )
             )
             count = count_result.scalar() or 0
+            if count == 0:
+                continue  # hide empty sessions
             out.append(SessionOut(
                 id=str(session.id),
                 agent_id=str(session.agent_id),
@@ -111,6 +113,8 @@ async def list_sessions(
                 )
             )
             count = count_result.scalar() or 0
+            if count == 0:
+                continue  # hide empty sessions
             out.append(SessionOut(
                 id=str(session.id),
                 agent_id=str(session.agent_id),
